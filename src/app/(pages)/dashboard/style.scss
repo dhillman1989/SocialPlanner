@@ -1,0 +1,71 @@
+// .Dashboard {
+//   width: 98%;
+//   max-width: 960px;
+//   margin: 0 auto;
+//   .dashboard-events,
+//   .social_accounts {
+//     margin: 0 auto;
+//     padding: 20px;
+//     margin-bottom: 20px;
+//   }
+
+//   .social_accounts_list {
+//     display: flex;
+//     gap: 10px;
+//     & .social_account {
+//       display: block;
+
+//       width: 100px;
+
+//       border-radius: 6px;
+//     }
+//   }
+
+//   .social_account_thumbnail {
+//     width: 100px;
+//     height: 100px;
+//     position: relative;
+//     transition: transform 0.5s;
+//     &:hover {
+//       transform: scale(0.9);
+//     }
+//   }
+
+//   .dashboard_events_list {
+//     & .dashboard_event {
+//       display: flex;
+//       margin-bottom: 10px;
+//     }
+//     & .event_thumbnail {
+//       display: block;
+//       width: 100px;
+//       height: 100px;
+//       flex-grow: 0;
+//       flex-shrink: 0;
+
+//       margin-right: 10px;
+//     }
+
+//     & .event_info {
+//       flex-grow: 1;
+//       span {
+//         display: block;
+//       }
+//       .event_name {
+//         font-weight: 800;
+//         font-size: 1.1rem;
+//       }
+//       .event_campaign {
+//         display: inline-block;
+//         margin-block: 5px;
+//         padding: 5px;
+//         border-radius: 6px;
+//         font-size: 14px;
+//         background-color: rgb(255, 158, 158);
+//       }
+//       .event_channel {
+//         text-transform: capitalize;
+//       }
+//     }
+//   }
+// }

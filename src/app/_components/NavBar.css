@@ -1,0 +1,14 @@
+.NavBar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+}
+.NavBar nav {
+  display: flex;
+  align-items: center;
+}
+.NavBar .nav-link {
+  margin-left: 10px;
+}/*# sourceMappingURL=NavBar.css.map */
