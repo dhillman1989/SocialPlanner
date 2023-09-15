@@ -8,9 +8,6 @@ import Event from "../../../schemas/eventSchema";
 connect();
 
 export async function GET(req) {
-  const { searchParams } = new URL(req.url);
-  const query = searchParams.get("search");
-
   const fullEventData = await Event.find()
     .populate({ path: "channel", model: Channel })
     .populate({ path: "campaign", model: Campaign })

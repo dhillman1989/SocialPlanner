@@ -17,3 +17,20 @@ main {
   width: 900px;
   color: text-primary-50;
 }
+
+.urgent {
+  font-weight: 600;
+  color: #ff5555;
+  padding-left: 15px;
+  position: relative;
+  &::after {
+    position: absolute;
+    left: 2px;
+    top: 5px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+  }
+}

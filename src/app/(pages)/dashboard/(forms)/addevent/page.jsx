@@ -10,6 +10,7 @@ export default function NewChannel() {
     description: "",
     campaign_id: "",
     datetime: "",
+    datetimeConverted: null,
     newCampaignName: "",
   });
 
@@ -44,12 +45,14 @@ export default function NewChannel() {
       inputData.name == "" ||
       inputData.channel_id == "" ||
       inputData.campaign_id == "" ||
-      inputData.date == "" ||
+      inputData.datetime == "" ||
       inputData.description == ""
     ) {
       setError({ errorFound: true, message: "Please fill in all fields." });
       return;
     }
+    
+
     setFormSending(true);
 
     let campaign_id = inputData.campaign_id;
@@ -81,7 +84,7 @@ export default function NewChannel() {
               description: inputData.description,
               campaign_id: campaign_id,
               channel_id: inputData.channel_id,
-              datetime: inputData.datetime,
+              datetime: inputData.datetimeConverted,
             }),
           })
             .then(() => {
@@ -108,7 +111,7 @@ export default function NewChannel() {
           description: inputData.description,
           campaign_id: inputData.campaign_id,
 
-          datetime: inputData.datetime,
+          datetime: inputData.datetimeConverted,
         }),
       })
         .then(() => {
@@ -123,8 +126,13 @@ export default function NewChannel() {
   };
 
   const updateField = (e) => {
-    console.log(e.target.value);
-    setInputData({ ...inputData, [e.target.name]: e.target.value });
+    if(e.target.name == "datetime"){
+      e.target.valueAsDate = new Date(e.target.value);
+      setInputData({ ...inputData, [e.target.name]: e.target.value, datetimeConverted: e.target.valueAsDate });
+    }else{
+      setInputData({ ...inputData, [e.target.name]: e.target.value });
+    }
+    
   };
 
   const resetForm = (e) => {
