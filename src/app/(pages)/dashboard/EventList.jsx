@@ -1,13 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import moment from "moment";
 import formatDateTime from "../../../_helpers/formatDateTime";
 import getChannelIcon from "@/_helpers/getChannelIcons";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { getEvents } from "@/functions/event_actions";
 
-export default function EventList() {
+const todayDate = moment().utc();
+
+
+export default function EventList() {  
   const [eventData, setEventData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -18,11 +22,15 @@ export default function EventList() {
       if (res.error) {
         return;
       }
-      data = res.data;
-      setEventData(data);
-      setLoading(false);
+        data = res.data;
+        setEventData(data);
+        setLoading(false);
     })();
+    
   }, []);
+
+
+  console.log(todayDate)
 
   return (
     <div className=" dashboard-events border rounded p-3 m-3">
@@ -34,6 +42,7 @@ export default function EventList() {
         ) : (
           eventData &&
           eventData.map((event) => {
+            console.log(eventData)
             return (
               <li
                 key={event._id}
@@ -69,7 +78,7 @@ export default function EventList() {
                       {event.campaign.name}
                     </Link>
                   </span>
-                  <span className="event_datetime italic font-light text-sm">
+                  <span className={`${todayDate.diff(event.datetime, "days") < 3 ? 'urgent ' : ''}event_datetime italic font-light text-sm`}>
                     {formatDateTime(event.datetime)}
                   </span>
                   <span className="event_channel">{event.channel.name}</span>

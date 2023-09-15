@@ -5,13 +5,13 @@ import ChannelList from "./ChannelList";
 import EventList from "./EventList";
 import Link from "next/link";
 import Image from "next/image";
-import SearchBox from "@/app/_components/searchBox";
+
 
 export default function Dashboard() {
   return (
     <div className="Dashboard container">
       <HeaderBlock heading="Dashboard" />
-      <SearchBox />
+    
       <div>
         <ul className="flex gap-6 m-4 align-center justify-center">
           <Link
