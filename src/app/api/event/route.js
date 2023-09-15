@@ -11,23 +11,12 @@ export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const query = searchParams.get("search");
 
-  if (query == null) {
-    const fullEventData = await Event.find()
-      .populate({ path: "channel", model: Channel })
-      .populate({ path: "campaign", model: Campaign })
-      .exec();
+  const fullEventData = await Event.find()
+    .populate({ path: "channel", model: Channel })
+    .populate({ path: "campaign", model: Campaign })
+    .exec();
 
-    return NextResponse.json(fullEventData);
-  } else {
-    const fullEventData = await Event.find({
-      name: { $regex: new RegExp(`.*${query}.*`, "gi") },
-    })
-      .populate({ path: "channel", model: Channel })
-      .populate({ path: "campaign", model: Campaign })
-      .exec();
-
-    return NextResponse.json(fullEventData);
-  }
+  return NextResponse.json(fullEventData);
 }
 
 export async function POST(req, res) {
@@ -44,15 +33,6 @@ export async function POST(req, res) {
   await newEvent.save();
   return new Response(`Successfully added Event: ${name}`, { status: 200 });
 }
-
-// export async function PUT(req) {
-//   const data = await req.json();
-//   const { id, newData } = data;
-
-//   let index = events.findIndex((event) => id === event.id);
-//   events[index] = { ...events[index], ...newData };
-//   return NextResponse.json({ success: true });
-// }
 
 export async function DELETE(req) {
   const data = await req.json();
